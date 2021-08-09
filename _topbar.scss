@@ -1,0 +1,20 @@
+.topbar {
+  @include bgc($primary-color);
+  text-align: center;
+  &-link {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 500;
+    padding: 10px 15px;
+    font-size: calc(14px - 1px);
+    display: inline-block;
+    line-height: 1.5;
+  }
+  @include maxWidth(767px) {
+    &-link {
+      font-size: 11px;
+    }
+  }
+}

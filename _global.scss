@@ -1,0 +1,101 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Quicksand", sans-serif;
+}
+
+body {
+  line-height: 1;
+  font-size: 14px;
+  color: #272727;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+  @include minWidth(992px) {
+    max-width: 970px;
+  }
+  @include minWidth(1200px) {
+    max-width: 1200px;
+  }
+  @include minWidth(1375px) {
+    max-width: 1300px;
+  }
+}
+
+.product-new {
+  text-align: center;
+  padding: 40px 0;
+  &-title {
+    font-size: 28px;
+    color: #272727;
+    line-height: 1.1;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 15px;
+    display: block;
+    width: fit-content;
+    margin: auto;
+    word-break: break-all;
+    &::after {
+      @include blockCenter($set: "left");
+      @include size(56px, 1.8px);
+      @include bgc(currentColor);
+      content: "";
+      bottom: 0;
+    }
+  }
+  &-more {
+    text-decoration: none;
+    margin-top: 15px;
+    display: inline-block;
+    color: #272727;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  @include maxWidth(425px) {
+    &-title {
+      font-size: 19px;
+    }
+  }
+}
+
+.dms.reveal {
+  position: relative !important;
+  z-index: 2 !important;
+  font-size: 0 !important;
+  display: inline-block;
+}
+.dms.fade.reveal > .visible.content {
+  opacity: 1;
+}
+.dms.fade.reveal:focus > .visible.content, 
+.dms.fade.reveal:hover > .visible.content {
+  opacity: 0;
+}
+.dms.fade.reveal > .visible.content{
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 4 !important;
+  -webkit-transition: all .5s cubic-bezier(0.175,.885,.32,1) .15s;
+  -moz-transition: all .5s cubic-bezier(0.175,.885,.32,1) .15s;
+  transition: all .5s cubic-bezier(0.175,.885,.32,1) .15s;
+  @include maxWidth(1024px) {
+    display: none;
+  }
+}
+.dms.reveal > .hidden.content {
+  position: relative !important;
+  z-index: 3 !important;
+}
+.dms.reveal > .content {
+  font-size: 1em !important;
+}

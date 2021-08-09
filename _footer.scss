@@ -1,0 +1,130 @@
+.footer {
+  margin: 40px 0 20px;
+  &-container {
+    @include flexbox($justify-content: space-between);
+  }
+  &-items {
+    width: calc(25% - 22.5px);
+  }
+  &-title {
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    word-break: break-all;
+  }
+  &-desc {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 21px;
+    word-break: break-all;
+  }
+  &-logo {
+    @include size(150px, 56px);
+    display: block;
+    transform: translateX(-8px);
+    img {
+      @include size(100%);
+      object-fit: cover;
+    }
+  }
+  &-social {
+    margin-top: 20px;
+  }
+
+  &-hover {
+    + .footer-hover {
+      margin-left: 14px;
+    }
+    display: inline-block;
+    @include size(35px);
+    line-height: 39px;
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+    color: #fff;
+    @include bgc($primary-color);
+    transition: 300ms;
+    &::after {
+      pointer-events: none;
+      position: absolute;
+      @include size(100%);
+      border-radius: 50%;
+      content: "";
+      box-sizing: content-box;
+      box-shadow: 0 0 0 4.2px #9eacca;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: 300ms;
+    }
+    &:hover {
+      background-color: #fff;
+    }
+    &:hover::after {
+      opacity: 1;
+      transform: scale(1.15);
+    }
+    ion-icon {
+      font-size: 15px;
+    }
+    &:hover {
+      ion-icon {
+        color: $primary-dark;
+      }
+    }
+  }
+  &-list {
+    list-style-type: none;
+    &-items {
+      line-height: 28px;
+      padding-left: 20px;
+      word-break: break-all;
+    }
+    &-link {
+      display: block;
+      width: fit-content;
+      text-decoration: none;
+      color: unset;
+      font-size: 14px;
+      word-break: break-all;
+    }
+    span {
+      font-weight: 600;
+    }
+  }
+  &--hx {
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 50%;
+      bottom: 0;
+      left: -18px;
+      content: "";
+      @include size(8px, 1px);
+      @include bgc(currentColor);
+    }
+  }
+  @include maxWidth(1279px) {
+    &-hover + &-hover {
+      margin-left: 4px;
+    }
+  }
+  @include maxWidth(1023px) {
+    &-container {
+      margin-bottom: -30px;
+      @include flexbox($wrap: wrap, $justify-content: space-between);
+    }
+    &-items {
+      width: calc(50% - 30px);
+      margin-bottom: 30px;
+    }
+  }
+  @include maxWidth(767px) {
+      &-items {
+        width: 100%;
+      }
+  }
+}

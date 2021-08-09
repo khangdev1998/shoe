@@ -1,0 +1,200 @@
+.header {
+  @include bgc(white);
+  &-container {
+    @include flexbox(
+      $justify-content: space-between,
+      $align-items: center
+      );
+  }
+  &-bar-mobile {
+    font-size: 28px;
+    display: none;
+  }
+  &-overlay-mobile {
+    @include bgc(rgba(0, 0, 0, 0.6));
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    display: none;
+    animation: fadeIn linear 0.4s;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  &-check-mobile:checked ~ &-menu-mobile {
+    transform: translateX(0);
+  }
+  &-check-mobile:checked ~ &-overlay-mobile {
+    display: block;
+  }
+  &-menu-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 350px;
+    max-width: 100%;
+    overflow: scroll;
+    transform: translateX(-100%);
+    transition: transform linear 0.4s;
+    @include bgc($primary-ligth);
+    z-index: 99999;
+    ul label ion-icon {
+      position: absolute;
+      right: 1.6rem;
+      top: -34px;
+      font-size: 28px;
+    }
+    > ul {
+      margin-top: 45px;
+      position: relative;
+    }
+  }
+  li {
+    border-bottom: 1px solid #eeeeee;
+  }
+  &-menu-mobile &-menu-link {
+    text-decoration: none;
+    padding: 20px;
+    font-size: 15px;
+    color: ($primary-dark);
+    display: inline-block;
+    font-weight: 600;
+  }
+  &-hotline-mobile {
+    text-align: center;
+    margin-top: 64px;
+}
+  &-hotline-image {
+    @include size(280px);
+  }
+  &-logo {
+    @include size(256px, 48px);
+    display: block;
+    &-image {
+      @include size(100%);
+    }
+  }
+  &-menu {
+    list-style-type: none;
+  }
+  &-menu-items {
+    display: inline-block;
+    position: relative;
+  }
+
+  &-menu-items > &-menu-link {
+    padding: 28px 0;
+    text-decoration: none;
+    margin: 0 12px;
+    font-size: 14px;
+    color: $primary-dark;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: inline-block;
+  }
+  &-menu-link {
+    ion-icon {
+      font-size: 12.9px;
+      transform: translateY(1px);
+    }
+  }
+  &-submenu {
+    list-style-type: none;
+    position: absolute;
+    width: 176px;
+    background-color: $primary-ligth;
+    display: none;
+    animation: growDown 420ms ease-in-out forwards;
+    transform-origin: top center;
+    z-index: 99;
+    @keyframes growDown {
+      0% {
+        transform: scaleY(0);
+        opacity: 0;
+      }
+      80% {
+        transform: scaleY(1.1);
+      }
+      100% {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+    }
+    &-link {
+      display: block;
+      text-decoration: none;
+      color: $primary-dark;
+      font-size: 14px;
+      text-align: left;
+      padding: 12px 18px;
+      white-space: nowrap;
+    }
+  }
+  &-menu-items:hover {
+    .header-submenu {
+      display: block;
+    }
+  }
+  &-group {
+    &-link {
+      text-decoration: none;
+      position: relative;
+      ion-icon {
+        font-size: 24px;
+      }
+      & + & {
+        margin-left: 12px;
+      }
+      span {
+        @include size(20px);
+        @include bgc($primary-dark);
+        border-radius: 50%;
+        display: inline-block;
+        color: white;
+        text-align: center;
+        line-height: 20px;
+        font-size: 12.8px;
+        position: absolute;
+        top: -20px;
+        right: -10px;
+      }
+    }
+  }
+  @include maxWidth(1279px) {
+    &-menu-items > &-menu-link {
+      font-size: 11px;
+    }
+    &-logo {
+      @include size(180px, 35px);
+    }
+  }
+  @include maxWidth(1023px) {
+    padding: 22px 0;
+    &-bar-mobile {
+      display: block;
+    }
+    &-menu {
+      display: none;
+    }
+  }
+  @include maxWidth(767px) {
+      &-logo {
+        @include size(160px, 29px);
+      }
+  }
+  @include maxWidth(375px) {
+    &-group {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,66 @@
+.banner {
+  &-slider {
+    @include size(100%, 72vh);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: block;
+    position: relative;
+    &--1 {background-image: url("image/slide1.png");}
+    &--2 {background-image: url("image/slide2.jpg");}
+    &--3 {background-image: url("image/slide3.png");}
+    &--4 {background-image: url("image/slide4.png");}
+  }
+  @include maxWidth(1279px) {
+    &-slider {
+      @include size (100%, 380px);
+    }
+  }
+  @include maxWidth(767px) {
+    %prevNext {
+      @include size(40px);
+    }
+    .owl-nav {
+      font-size: 14.5px;
+    }
+    &-slider {
+      height: 200px;
+    }
+  }
+}
+
+.owl-nav {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 24px;
+  z-index: 9999;
+  @include bgc(#F6F4F3);
+  &::before {
+    content: "";
+    @include blockCenter($set: "both");
+    @include size(1.4px, 45px);
+    @include bgc(#E0E0E0);  
+  }
+}
+
+.owl-theme .owl-nav [class*=owl-] {
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+%prevNext {
+  @include size(80px);
+  transition: ease-out 0.4s;
+  &:hover {
+    @include bgc(#9EACCA !important);
+  }
+}
+
+.owl-prev {
+  @extend %prevNext;
+}
+
+.owl-next {
+  @extend %prevNext;
+}

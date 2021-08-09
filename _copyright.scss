@@ -1,0 +1,21 @@
+.copyright {
+  border-top: 1px dashed #e0d9d6;
+  padding: 24px 0;
+  text-align: center;
+  &-link {
+    text-decoration: none;
+    color: unset;
+    font-weight: 600;
+    &:hover {
+      color: $primary-color;
+      transition: 0.2s;
+    }
+  }
+  @include maxWidth(767px) {
+    padding: 18px 0;
+    &-text {
+      display: block;
+      margin-bottom: 10px;
+    }
+  }
+}

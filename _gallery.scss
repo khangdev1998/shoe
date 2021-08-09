@@ -1,0 +1,50 @@
+.gallery {
+  @include flexbox($justify-content: space-between);
+  &-items {
+    width: calc(16.667% - 3.3333px);
+    overflow: hidden;
+    img {
+      @include size(100%);
+      vertical-align: middle;
+      object-fit: cover;
+    }
+  }
+  &-hover {
+    figure {
+      position: relative;
+      &::before {
+        position: absolute;
+        top: 0;
+        left: -75%;
+        z-index: 2;
+        display: block;
+        content: "";
+        @include size(50%, 100%);
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.3) 100%
+        );
+        transform: skewX(-25deg);
+      }
+      &:hover::before {
+        animation: shine 0.75s;
+      }
+      @keyframes shine {
+        100% {
+          left: 125%;
+        }
+      }
+    }
+  }
+  @include maxWidth(1023px) {
+    margin-bottom: -10px;
+    @include flexbox(
+    $justify-content: space-between,
+    $wrap: wrap);
+    &-items {
+      width: calc(33.333% - 6.6667px);
+      margin-bottom: 10px;
+    }
+  }
+}

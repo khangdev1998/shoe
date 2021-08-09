@@ -1,0 +1,42 @@
+.product {
+  &-list {
+    @include flexbox($justify-content: space-between, $wrap: wrap);
+    &-items {
+      width: calc(25% - 22.5px);
+      margin-bottom: 28px;
+      img {
+        width: 100%;
+        vertical-align: middle;
+        object-fit: cover;
+      }
+    }
+  }
+  &-content {
+    padding: 10px 0;
+    text-align: center;
+    &-link {
+      display: inline-block;
+      text-decoration: none;
+      color: $primary-dark;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all linear 0.2s;
+      width: fit-content;
+      margin: auto;
+      @include lineClamp();
+      &:hover {
+        color: $primary-color;
+      }
+    }
+    &-price {
+      display: block;
+      margin-top: 10px;
+      word-break: break-word;
+    }
+  }
+  @include maxWidth(767px) {
+      &-list-items {
+          width: calc(50% - 5px);
+      }
+  }
+}
